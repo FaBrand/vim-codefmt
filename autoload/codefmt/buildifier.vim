@@ -42,7 +42,7 @@ function! codefmt#buildifier#GetFormatter() abort
     let l:lint_flag = s:plugin.Flag('buildifier_lint_mode')
     let l:cmd = [ s:plugin.Flag('buildifier_executable') ]
     if !empty(l:lint_flag)
-      let l:cmd += ["--lint=" . l:lint_flag]
+      let l:cmd += ["--lint=" . l:lint_flag, '-warnings', '-module-docstring,-function-docstring,-print,-provider-params,-unnamed-macro,+out-of-order-load,+unsorted-dict-items', ']
     endif
     let l:warnings_flag = s:plugin.Flag('buildifier_warnings')
     if !empty(l:warnings_flag)
