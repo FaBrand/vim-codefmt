@@ -93,6 +93,10 @@ call s:plugin.Flag('yapf_executable', 'yapf')
 call s:plugin.Flag('black_executable', 'black')
 
 ""
+" The path to the black executable.
+call s:plugin.Flag('standard_executable', 'standard')
+
+""
 " The path to the isort executable.
 call s:plugin.Flag('isort_executable', 'isort')
 
