@@ -19,7 +19,7 @@ let s:plugin = maktaba#plugin#Get('codefmt')
 ""
 " @private
 " Formatter: standard
-function! codefmt#standard() abort
+function! codefmt#standard#GetFormatter() abort
   let l:formatter = {
       \ 'name': 'standard',
       \ 'setup_instructions': 'Install stardard ' .
@@ -30,7 +30,7 @@ function! codefmt#standard() abort
   endfunction
 
   function l:formatter.AppliesToBuffer() abort
-    return &filetype is# 'python'
+    return &filetype is# 'javascript'
   endfunction
 
   ""
@@ -43,9 +43,12 @@ function! codefmt#standard() abort
     let l:cmd = [ s:plugin.Flag('standard_executable'), '--fix' ]
     let l:fname = expand('%:p')
     if !empty(l:fname)
-      let l:cmd += ['-path', l:fname]
+      let l:cmd += [l:fname]
     endif
-    call codefmt#formatterhelpers#Format(l:cmd)
+    try
+      call codefmt#formatterhelpers#Format(l:cmd)
+    catch
+    endtry
   endfunction
 
   return l:formatter

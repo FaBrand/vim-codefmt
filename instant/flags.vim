@@ -93,7 +93,7 @@ call s:plugin.Flag('yapf_executable', 'yapf')
 call s:plugin.Flag('black_executable', 'black')
 
 ""
-" The path to the black executable.
+" The path to the standard executable.
 call s:plugin.Flag('standard_executable', 'standard')
 
 ""
